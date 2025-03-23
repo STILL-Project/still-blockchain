@@ -132,7 +132,7 @@ func (l *Log) Errf(format string, a ...any) {
 func (l *Log) Debug(a ...any) {
 	l.Lock()
 	defer l.Unlock()
-	if l.logLevel < 1 {
+	if l.logLevel < 2 {
 		return
 	}
 	l.stdout.Write([]byte(getLogPrefix() + Cyan + "D " + fmt.Sprintln(a...) + Reset))
@@ -140,7 +140,7 @@ func (l *Log) Debug(a ...any) {
 func (l *Log) Debugf(format string, a ...any) {
 	l.Lock()
 	defer l.Unlock()
-	if l.logLevel < 1 {
+	if l.logLevel < 2 {
 		return
 	}
 	l.stdout.Write([]byte(getLogPrefix() + Cyan + fmt.Sprintf("D "+format+"\n", a...) + Reset))
@@ -149,7 +149,7 @@ func (l *Log) Debugf(format string, a ...any) {
 func (l *Log) Dev(a ...any) {
 	l.Lock()
 	defer l.Unlock()
-	if l.logLevel < 1 {
+	if l.logLevel < 3 {
 		return
 	}
 	l.stdout.Write([]byte(getLogPrefix() + Cyan + "d " + fmt.Sprintln(a...) + Reset))
@@ -158,7 +158,7 @@ func (l *Log) Dev(a ...any) {
 func (l *Log) Devf(format string, a ...any) {
 	l.Lock()
 	defer l.Unlock()
-	if l.logLevel < 1 {
+	if l.logLevel < 3 {
 		return
 	}
 	l.stdout.Write([]byte(getLogPrefix() + Cyan + fmt.Sprintf("d "+format+"\n", a...) + Reset))
@@ -167,7 +167,7 @@ func (l *Log) Devf(format string, a ...any) {
 func (l *Log) Net(a ...any) {
 	l.Lock()
 	defer l.Unlock()
-	if l.logLevel < 1 {
+	if l.logLevel < 3 {
 		return
 	}
 	l.stdout.Write([]byte(getLogPrefix() + Green + "N " + fmt.Sprintln(a...) + Reset))
@@ -175,7 +175,7 @@ func (l *Log) Net(a ...any) {
 func (l *Log) Netf(format string, a ...any) {
 	l.Lock()
 	defer l.Unlock()
-	if l.logLevel < 1 {
+	if l.logLevel < 3 {
 		return
 	}
 	l.stdout.Write([]byte(getLogPrefix() + Green + fmt.Sprintf("N "+format+"\n", a...) + Reset))
@@ -184,7 +184,7 @@ func (l *Log) Netf(format string, a ...any) {
 func (l *Log) NetDev(a ...any) {
 	l.Lock()
 	defer l.Unlock()
-	if l.logLevel < 1 {
+	if l.logLevel < 4 {
 		return
 	}
 	l.stdout.Write([]byte(getLogPrefix() + Green + "n " + fmt.Sprintln(a...) + Reset))
@@ -193,7 +193,7 @@ func (l *Log) NetDev(a ...any) {
 func (l *Log) NetDevf(format string, a ...any) {
 	l.Lock()
 	defer l.Unlock()
-	if l.logLevel < 1 {
+	if l.logLevel < 4 {
 		return
 	}
 	l.stdout.Write([]byte(getLogPrefix() + Green + fmt.Sprintf("n "+format+"\n", a...) + Reset))

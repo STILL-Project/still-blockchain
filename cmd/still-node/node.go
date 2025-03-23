@@ -8,7 +8,6 @@ import (
 	"still-blockchain/config"
 	"still-blockchain/logger"
 	"strings"
-	"time"
 )
 
 var Log = logger.New()
@@ -25,7 +24,7 @@ func main() {
 	rpc_bind_port := flag.Uint("rpc-bind-port", config.RPC_BIND_PORT, "starts RPC server on this port")
 	stratum_bind_ip := flag.String("stratum-bind-ip", "127.0.0.1", "use 0.0.0.0 to expose Stratum server")
 	stratum_bind_port := flag.Uint("stratum-bind-port", config.STRATUM_BIND_PORT, "")
-	log_level := flag.Uint("log-level", 0, "sets the log level (range: 0-2)")
+	log_level := flag.Uint("log-level", 1, "sets the log level")
 
 	var slavechains_stratums *string
 	var stratum_wallet *string
@@ -73,11 +72,6 @@ func main() {
 	go bc.StartStratum(*stratum_bind_ip, uint16(*stratum_bind_port))
 	go bc.StartP2P(config.SEED_NODES, uint16(*p2p_bind_port))
 	go bc.NewStratumJob(true)
-
-	go func() {
-		time.Sleep(5 * time.Second)
-		Log.Fatal("test")
-	}()
 
 	prompts(bc)
 }
