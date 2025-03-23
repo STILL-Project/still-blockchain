@@ -4,8 +4,8 @@ import "time"
 
 const COIN = 1_000_000_000                     // 1e9
 const FEE_PER_BYTE = 500_000                   // ~0.06 coins per tx
-const BLOCK_REWARD = 552 * COIN                // initial block reward
-const REDUCTION_INTERVAL = BLOCKS_PER_DAY * 30 // block reward reduces by 10% every 60 days
+const BLOCK_REWARD = 184 * COIN                // initial block reward
+const REDUCTION_INTERVAL = BLOCKS_PER_DAY * 90 // block reward reduces by 10% every 90 days
 
 // The exact number is slightly smaller than this because of rounding errors. You can see the accurate result
 // using the reward_test.go file. Error is less than 0.00000005% so it doesn't matter much, anyway.
